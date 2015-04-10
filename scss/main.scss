@@ -1,0 +1,426 @@
+$bg-color: #273544;
+$body-color: #fff;
+$gold: #C5A41D;
+$gray: #BABFC5;
+$blue: #12789B;
+$input-color: #3A495A;
+
+// Breakpoints
+$desktop: 1140px; //http://www.1140px.com/
+$tablet: 980px;
+$mobile: 300px;
+
+// Fonts
+$font-family-text: 'Roboto', sans-serif;
+$font-family-heading: 'Roboto Condensed', sans-serif;
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+html {
+    font-size: 1em;
+    line-height: 1.4;
+    font-family: $font-family-text;
+}
+
+body {
+  background: $bg-color url('/../img/hd_coming.jpg') no-repeat center center;
+	color: #fff;
+}
+
+//
+// Typography
+//
+
+%body-light {
+  font-weight: 100;
+}
+
+
+%body-medium {
+  font-weight: 500;
+}
+
+%heading-light {
+  font-family: $font-family-heading;
+  font-weight: 300;
+}
+
+%heading-bold {
+  font-family: $font-family-heading;
+  font-weight: 700;
+}
+
+//
+// Layout
+//
+
+.container {
+	width: 100%;
+  height: 100%;
+	margin: auto;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 75px 0;
+}
+
+.wrapper {
+    width: 90%;
+    margin: 0 5%;
+
+    @media screen and (min-width: 1140px) {
+      width: 1026px; /* 1140px - 10% for margins */
+      margin: 0 auto;
+    }
+}
+
+.is--hidden {
+	position: absolute;
+	visibility: hidden;
+}
+
+.l--vCenter {
+  display: inline-block;
+  vertical-align: center;
+}
+
+%clearfix {
+    *zoom: 1;
+
+    &:before,
+    &:after {
+      content: " ";
+      display: table;
+    }
+
+    &:after {
+      clear: both;
+    }
+}
+//
+// Header
+//
+
+.header {
+  order: 0;
+  flex: 0 1 auto;
+  align-self: auto;
+  display: table;
+}
+
+.header__inner {
+}
+
+.countdown {
+  @extend %clearfix;
+
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  float: right;
+
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  display: none;
+
+  li {
+    float: right;
+  }
+}
+
+.countdown__value {
+  @extend %heading-bold;
+  font-size: 50px;
+}
+
+.countdown__key {
+  @extend %heading-light;
+  font-size: 16px;
+}
+
+//
+// Hero
+//
+
+.main {
+  order: 0;
+  flex: 1 1 auto;
+  align-self: auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.teaser {
+  @extend %heading-bold;
+  font-size: 35px;
+}
+
+.hero-text {
+  @extend %heading-light;
+  font-size: 90px;
+  line-height: 85px;
+  text-transform: capitalize;
+  margin: 0;
+  max-width: 700px;
+}
+
+
+//
+// Form
+//
+
+.emailForm {
+  @extend %clearfix;
+  margin: 20px 0 63px;
+  position: relative;
+}
+
+.input__wrapper {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  width: 380px;
+  background-color: #fff;
+  float: left;
+
+  @extend %body-light;
+  font-size: 20px;
+  color: $input-color;
+
+  margin-right: 10px;
+  border-radius: 4px;
+}
+
+.input {
+  background-color: transparent;
+  line-height: normal;
+  height: 75px;
+  padding-left: 2em;
+  float: right;
+  border: none;
+  width: 100%;
+  outline: none;
+}
+
+.input::placeholder {
+  color: transparent;
+}
+
+.input__label {
+  position: absolute;
+  top: 0;
+  line-height: 75px;
+  width: 100%;
+  text-align: left;
+  overflow: hidden;
+}
+
+
+.input__label-icon {
+  display: inline-block;
+  transform: translate3d(-2em, 0, 0);
+  transition: transform 0.3s;
+  transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
+  text-align: center;
+  width: 1.5em;
+  background: $blue;
+  color: #FFF;
+  border-radius: 4px 0 0 4px;
+
+
+  .input--filled + .input__label &,
+  .input:focus + .input__label & {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.input__label-content {
+  display: inline-block;
+  transition: transform 0.3s, opacity 0.3s;
+  transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
+
+  .input--filled + .input__label &,
+  .input:focus + .input__label & {
+    transform: translate3d(100px, 0, 0);
+    opacity: 0;
+  }
+}
+
+.formErrors {
+  @extend %body-light;
+  transition-duration: 0.3s;
+  transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
+  opacity: 0;
+
+  .form--error & {
+    opacity: 1;
+  }
+}
+
+.submitButton {
+  height: 75px;
+  position: relative;
+  color: transparent;
+  text-transform: uppercase;
+  display: block;
+  float: left;
+  border: none;
+  background: $blue;
+  padding: 0 35px;
+  overflow: hidden;
+  outline: none;
+  border-radius: 4px;
+
+
+  &:before,
+  &:after {
+    color: #FFF;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    line-height: 75px;
+    text-align: center;
+
+    animation-fill-mode: forwards;
+    animation-duration: 0.3s;
+    animation-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
+  }
+
+  &:before {
+    content: attr(data-before);
+
+    .form--before--enter & {
+      animation-name: emailSubmitEnter;
+    }
+
+    .form--after--enter & {
+      animation-name: emailSubmitExit;
+    }
+  }
+
+  &:after {
+    content: attr(data-after);
+
+    .form--after--enter & {
+      animation-name: emailSubmitEnter;
+    }
+
+    .form--before--enter & {
+      animation-name: emailSubmitExit;
+    }
+  }
+}
+
+@keyframes emailSubmitEnter {
+  from { transform: translate3d(0, -75px, 0); opacity: 0; }
+  to { transform: translate3d(0, 0, 0); opacity: 1;}
+}
+
+@keyframes emailSubmitExit {
+  from { transform: translate3d(0, 0, 0); opacity: 1; }
+  to { transform: translate3d(0, 75px, 0); opacity: 0;}
+}
+
+.formErrors {
+  position: absolute;
+  left: 0;
+  top: 100%;
+}
+
+//
+// Body
+//
+
+.article__heading {
+  @extend %heading-light;
+  color: $gold;
+  font-size: 40px;
+  margin: 0;
+}
+
+.article__body {
+  @extend %body-light;
+  font-size: 18px;
+  line-height: 24px;
+  margin: 6px 0 25px;
+}
+
+.tagline {
+  @extend %body-medium;
+  font-size: 20px;
+}
+
+//
+// Footer
+//
+
+.footer {
+  order: 0;
+  flex: 0 1 auto;
+  align-self: auto;
+}
+
+.contact__heading {
+  @extend %body-medium;
+  font-size: 16px;
+  color: $gray;
+  float: left;
+  margin: 0;
+}
+
+.contact__text {
+  @extend %body-light;
+  font-size: 16px;
+  color: $gray;
+
+  div,
+  a {
+    float: left;
+    margin: 0 10px;
+    display: inline-block;
+  }
+
+  a,
+  a:link,
+  a:visited {
+    text-decoration: none;
+    color: inherit;
+    border-bottom: 1px solid transparent;
+    transition: border 0.3s ease-in;
+  }
+
+  a:hover {
+    border-bottom-color: #fff;
+    border-bottom-color: rgba(255, 255, 255, 0.8);;
+  }
+}
+
+.contact__break {
+  @media (max-width: 1150px) {
+    display: block;
+    width: 0px;
+    height: 0px;
+    visibility: hidden;
+    float: none;
+  }
+}
+
+.contact__numbers a {
+  @media (max-width: 1150px) {
+    display: block;
+    float: none;
+  }
+}
