@@ -2,6 +2,7 @@
   var formEl = document.getElementById('mc-embedded-subscribe-form');
   var formErrorEl = document.getElementById('formErrors');
   var formSubmitEl = document.getElementById('formSubmit');
+  var formEmailEl = document.getElementById('email');
   var formTimeout = null;
   var useBefore = true;
 
@@ -21,6 +22,15 @@
 
     classie.add(formEl, 'form--submitted');
     toggleSubmitStatus('Just hold on...');
+
+    // Hack to deal with the MC validator
+    setTimeout(function(){
+      if(classie.hasClass(formEmailEl, 'mce_inline_error')){
+      classie.add(formEl, 'form--error');
+      toggleSubmitStatus('Sorry, there was an error');
+      formErrorEl.innerHTML = 'Invalid Email';
+      }
+    }, 500);
   });
 
   function mceSuccessCb(resp){
