@@ -35,11 +35,16 @@ body {
 
 .logo {
   width: 50%;
+  max-width: 160px;
   padding-bottom: 140px;
 
   @media (min-width: $tablet) {
     width: auto;
     padding-bottom: 0px;
+  }
+
+  .lt-ie9 & {
+    width: auto;
   }
 }
 
@@ -102,6 +107,7 @@ body {
 }
 
 .l--vCenter {
+  width: 100%;
   display: inline-block;
   vertical-align: center;
 }
@@ -221,6 +227,7 @@ body {
 .emailForm {
   @extend %clearfix;
   margin-top: 30px;
+  margin-bottom: 20px;
   position: relative;
 
   @media (min-width: $tablet){
@@ -253,6 +260,12 @@ body {
     width: 380px;
     margin-right: 10px;
   }
+
+  .lt-ie9 & {
+    width: 49%;
+    margin-right: 2%;
+    margin-bottom: 0;
+  }
 }
 
 .input {
@@ -272,6 +285,10 @@ body {
 
 .input::placeholder {
   color: transparent;
+
+  .lt-ie9 & {
+    color: $gray;
+  }
 }
 
 .input__label {
@@ -281,6 +298,7 @@ body {
   width: 100%;
   text-align: left;
   overflow: hidden;
+
 
   @media (min-width: $tablet){
     line-height: 75px;
@@ -315,6 +333,10 @@ body {
   .input:focus + .input__label & {
     transform: translate3d(100px, 0, 0);
     opacity: 0;
+  }
+
+  .lt-ie9 & {
+    display: none;
   }
 }
 
@@ -359,6 +381,16 @@ body {
 
   @media (min-width: 1200px) {
     width: auto;
+  }
+
+  .lt-ie9 & {
+    width: 49%;
+    color: #FFF;
+
+    &:before,
+    &:after {
+      display: none;
+    }
   }
 
   &:before,
