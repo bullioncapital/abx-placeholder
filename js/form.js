@@ -5,7 +5,12 @@
   var formTimeout = null;
   var useBefore = true;
 
-  formEl.addEventListener( 'submit', function(){
+  formEl.addEventListener( 'submit', function(e){
+    formSubmitEl.setAttribute('disabled', 'disabled');
+
+    // Override the MailChimp post callback
+    window.mc.ajaxOptions.success = mceSuccessCb;
+
     classie.remove(formEl, 'form--success');
     classie.remove(formEl, 'form--error');
 
@@ -13,8 +18,7 @@
     toggleSubmitStatus('Just hold on...');
   });
 
-  // Override the MailChimp post callback
-  window.mc.ajaxOptions.success = function mceSuccessCb(resp){
+  function mceSuccessCb(resp){
     classie.remove(formEl, 'form--submitted');
     
     if (resp.result == "success"){
@@ -24,7 +28,8 @@
       formTimeout = setTimeout(function(){
         classie.remove(formEl, 'form--success');
         toggleSubmitStatus('Notify me when ABX launches');
-      }, 3000);
+        formSubmitEl.removeAttribute('disabled');
+      }, 2000);
     } 
     else {
       var parts = resp.msg.split(' - ',2);
@@ -44,9 +49,10 @@
 
       formTimeout = setTimeout(function(){
         toggleSubmitStatus('Notify me when ABX launches');
-      }, 3000);
+        formSubmitEl.removeAttribute('disabled');
+      }, 2000);
     }
-  };
+  }
 
   function toggleSubmitStatus(text){
     if(useBefore){
