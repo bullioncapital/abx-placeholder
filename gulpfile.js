@@ -43,9 +43,15 @@ gulp.task('scss', function () {
       cascade: false
     }))
     .pipe($.sourcemaps.write())
-    .pipe(gulp.dest('dist/assets'))
+    .pipe(gulp.dest('dist'))
     .on('error', $.util.log)
   ;
+});
+
+gulp.task('fonts', function(cb) {
+  return gulp.src(['assets/**/*.ttf'])
+    .pipe(gulp.dest('dist/assets'))
+    .on('error', $.util.log);
 });
 
 gulp.task('images', function(cb) {
@@ -111,6 +117,7 @@ gulp.task('watch', function () {
 
 gulp.task('build', ['clean'], function(cb){
   runSequence(
+    'fonts',
     'vendor',
     'scss',
     'js',
@@ -129,7 +136,7 @@ gulp.task('package', ['build'], function () {
     //.pipe($.minifyHtml(minifyHtmlOps))
     .pipe(gulp.dest('dist/'))
     .pipe($.inlineBase64({
-        baseDir: __dirname + '/dist/assets/',
+        baseDir: __dirname + '/dist/',
         maxSize: 14 * 1024,
         debug: true
     }))
