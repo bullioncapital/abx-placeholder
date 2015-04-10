@@ -48,12 +48,6 @@ gulp.task('scss', function () {
   ;
 });
 
-gulp.task('fonts', function(cb) {
-  return gulp.src(['assets/**/*.ttf'])
-    .pipe(gulp.dest('dist/assets'))
-    .on('error', $.util.log);
-});
-
 gulp.task('images', function(cb) {
   return gulp.src(['assets/**/*.png','assets/**/*.jpg','assets/**/*.gif','assets/**/*.jpeg'])
     .pipe($.imageOptimization({
@@ -117,7 +111,6 @@ gulp.task('watch', function () {
 
 gulp.task('build', ['clean'], function(cb){
   runSequence(
-    'fonts',
     'vendor',
     'scss',
     'js',
