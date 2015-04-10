@@ -7,8 +7,7 @@ $input-color: #3A495A;
 
 // Breakpoints
 $desktop: 1140px; //http://www.1140px.com/
-$tablet: 980px;
-$mobile: 300px;
+$tablet: 768px;
 
 // Fonts
 $font-family-text: 'Roboto', sans-serif;
@@ -173,16 +172,36 @@ body {
 
 .teaser {
   @extend %heading-bold;
-  font-size: 35px;
+  font-size: 30px;
+
+  @media (min-width: $tablet ){
+    font-size: 3vw;
+  }
+
+  @media (min-width: $desktop){
+    font-size: 35px;
+  }
 }
 
 .hero-text {
   @extend %heading-light;
-  font-size: 90px;
-  line-height: 85px;
+  font-size: 70px;
+  line-height: 70px;
+
   text-transform: capitalize;
   margin: 0;
   max-width: 700px;
+
+
+  @media (min-width: $tablet ){
+    font-size: 8vw;
+    line-height: 8vw;
+  }
+
+  @media (min-width: $desktop ){
+    font-size: 90px;
+    line-height: 85px;
+  }
 }
 
 
