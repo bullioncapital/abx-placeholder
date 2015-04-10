@@ -43,29 +43,29 @@ gulp.task('scss', function () {
       cascade: false
     }))
     .pipe($.sourcemaps.write())
-    .pipe(gulp.dest('dist/css'))
+    .pipe(gulp.dest('dist/assets'))
     .on('error', $.util.log)
   ;
 });
 
 gulp.task('images', function(cb) {
-  return gulp.src(['img/**/*.png','img/**/*.jpg','img/**/*.gif','img/**/*.jpeg'])
+  return gulp.src(['assets/**/*.png','assets/**/*.jpg','assets/**/*.gif','assets/**/*.jpeg'])
     .pipe($.imageOptimization({
       optimizationLevel: 5,
       progressive: true,
       interlaced: true
     }))
-    .pipe(gulp.dest('dist/img'))
+    .pipe(gulp.dest('dist/assets'))
     .on('error', $.util.log);
 });
 
 gulp.task('js', function(){
   var js =  gulp.src('js/*.js')
     .pipe($.concat('main.js'))
-    .pipe(gulp.dest('dist/js'))
+    .pipe(gulp.dest('dist/assets'))
     .on('error', $.util.log);
 
-  var modernizer = gulp.src(['index.html', 'js/*.js', 'dist/css/*.css']) 
+  var modernizer = gulp.src(['index.html', 'js/*.js', 'dist/assets/*.css']) 
     .pipe($.modernizr({
       "options" : [
         "setClasses",
@@ -78,7 +78,7 @@ gulp.task('js', function(){
         'transforms'
       ],
     }))
-    .pipe(gulp.dest('dist/js'))
+    .pipe(gulp.dest('dist/assets'))
     .on('error', $.util.log);
 
   return merge(js, modernizer);
@@ -87,7 +87,7 @@ gulp.task('js', function(){
 gulp.task('vendor', function(){
   var css = gulp.src('vendor/**/*.css')
     .pipe($.rename('vendor.min.css'))
-    .pipe(gulp.dest('dist/css'))
+    .pipe(gulp.dest('dist/assets'))
     .on('error', $.util.log);
 
   var shiv = gulp.src('vendor/html5-3.6-respond-1.4.2.min.js')
@@ -129,7 +129,7 @@ gulp.task('package', ['build'], function () {
     //.pipe($.minifyHtml(minifyHtmlOps))
     .pipe(gulp.dest('dist/'))
     .pipe($.inlineBase64({
-        baseDir: __dirname + '/dist',
+        baseDir: __dirname + '/dist/assets/',
         maxSize: 14 * 1024,
         debug: true
     }))
