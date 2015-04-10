@@ -5,6 +5,11 @@
   var formTimeout = null;
   var useBefore = true;
 
+  // Bail for IE8
+  if(!formEl.addEventListener){
+    return;
+  }
+
   formEl.addEventListener( 'submit', function(e){
     formSubmitEl.setAttribute('disabled', 'disabled');
 

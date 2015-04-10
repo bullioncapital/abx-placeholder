@@ -1,4 +1,11 @@
 (function() {
+  var inputEl = document.getElementById('email');
+
+  // Bail for IE8
+  if(!inputEl.addEventListener){
+    return;
+  }
+
   // trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
   if (!String.prototype.trim) {
     (function() {
@@ -10,8 +17,6 @@
     })();
   }
   
-  var inputEl = document.getElementById('email');
-
   if( inputEl.value.trim() !== '' ) {
     classie.add(inputEl, 'input--filled');
   }
