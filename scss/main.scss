@@ -29,8 +29,13 @@ html {
 }
 
 body {
-  background: $bg-color url('assets/hd_coming.jpg') no-repeat center center;
+  background: $bg-color url('assets/hd_coming_mobile.jpg') no-repeat top center;
+  background-size: auto 100%;
 	color: #fff;
+
+  @media (min-width: $tablet) {
+    background: $bg-color url('assets/hd_coming.jpg') no-repeat top center;
+  }
 }
 
 .logo {
