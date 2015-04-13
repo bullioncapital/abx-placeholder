@@ -26,7 +26,20 @@
         <meta name="twitter:description" content="Allocated Bullion Exchange (ABX) is the world's first electronic exchange for allocated physical precious metals.">
         <meta name="twitter:image" content="http://abxglobal.com/assets/abx_logo.png">
 
-        <link href='http://fonts.googleapis.com/css?family=Roboto:500,100|Roboto+Condensed:700,300' rel='stylesheet' type='text/css'>
+        <!--<link href='http://fonts.googleapis.com/css?family=Roboto:500,100|Roboto+Condensed:700,300' rel='stylesheet' type='text/css'>-->
+        <script type="text/javascript">
+          WebFontConfig = {
+            google: { families: [ 'Roboto:500,100:latin', 'Roboto+Condensed:700,300:latin' ] }
+          };
+          (function() {
+            var wf = document.createElement('script');
+            wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+              '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+            wf.type = 'text/javascript';
+            wf.async = 'true';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(wf, s);
+        })(); </script>
 
         <link rel="stylesheet" inline href="dist/assets/vendor.min.css">
         <link rel="stylesheet" inline href="dist/main.css">
@@ -40,7 +53,7 @@
         <div class="container">
             <header class="header wrapper">
               <img class="logo" src="assets/abx_logo.png" alt="ABX - Allocated Bullion Exchange" />
-              <div class="is--hidden">Allocated Bullion Exchange</div>
+              <h1 class="is--hidden">Allocated Bullion Exchange</h1>
               <ul class="countdown">
                 <li>
                   <div class="countdown__value">88</div>

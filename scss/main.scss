@@ -11,8 +11,8 @@ $desktop: 1140px; //http://www.1140px.com/
 $tablet: 768px;
 
 // Fonts
-$font-family-text: 'Roboto', sans-serif;
-$font-family-heading: 'Roboto Condensed', sans-serif;
+$font-family-text: 'Roboto', 'Arial Narrow', sans-serif;
+$font-family-heading: 'Roboto Condensed', 'Arial Narrow', sans-serif;
 
 // Background
 $background: 'assets/hd_coming.jpg';
@@ -41,16 +41,17 @@ body {
 
 .logo {
   width: 50%;
-  max-width: 160px;
-  padding-bottom: 140px;
+  margin-bottom: 140px;
 
   @media (min-width: $tablet) {
     width: auto;
-    padding-bottom: 0px;
+    height: 91px;
+    margin: 0;
   }
 
   .lt-ie9 & {
     width: auto;
+    height: 91px;
   }
 }
 
@@ -62,9 +63,20 @@ body {
   font-weight: 100;
 }
 
+.wf-roboto-n1-inactive %body-light {
+  letter-spacing: 0.06em;
+  font-family: Arial Narrow, sans-serif;
+}
 
 %body-medium {
   font-weight: 500;
+}
+
+.wf-roboto-n5-inactive %body-medium {
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  font-family: 'Arial Narrow', sans-serif;
+
 }
 
 %heading-light {
@@ -72,10 +84,22 @@ body {
   font-weight: 300;
 }
 
+.wf-robotocondensed-n3-inactive %heading-light {
+  letter-spacing: 0.01em;
+  font-family: 'Arial Narrow', sans-serif;
+  font-weight: 600;
+}
+
 %heading-bold {
   font-family: $font-family-heading;
   font-weight: 700;
 }
+
+.wf-robotocondensed-n3-inactive %heading-bold  {
+  letter-spacing: 0.02em;
+  font-family: 'Arial Narrow', sans-serif;
+}
+
 
 //
 // Layout
