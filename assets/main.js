@@ -194,7 +194,8 @@ function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
 e=o.createElement(i);r=o.getElementsByTagName(i)[0];
 e.src='//www.google-analytics.com/analytics.js';
 r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+ga('create','UA-48729948-7','auto');ga('send','pageview');
+
 (function() {
   var inputEl = document.getElementById('email');
 
