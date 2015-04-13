@@ -181,12 +181,14 @@ if ( typeof define === 'function' && define.amd ) {
     }
 
     var elem = document.getElementById('csspseudoanimations_test');
-    return window.getComputedStyle(elem, ':before').getPropertyValue('font-size') === '10px';
+    return window.getComputedStyle(elem, ':before').getPropertyValue('font-size') !== '10px';
   }
 
-  if(!canAnimate()){
-    classie.add(document.body, 'no-csspseudoanimations');
-  }
+  document.addEventListener("DOMContentLoaded", function(event) { 
+    if(!canAnimate()){
+      classie.add(document.body, 'no-csspseudoanimations');
+    }
+  });
 })();
 
 (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
