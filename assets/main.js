@@ -86,6 +86,7 @@ if ( typeof define === 'function' && define.amd ) {
   var formEmailEl = document.getElementById('email');
   var formTimeout = null;
   var useBefore = true;
+  var isDisabled = false;
 
   // Bail for IE8
   if(!formEl.addEventListener){
@@ -93,7 +94,10 @@ if ( typeof define === 'function' && define.amd ) {
   }
 
   formEl.addEventListener( 'submit', function(e){
-    formSubmitEl.setAttribute('disabled', 'disabled');
+    if(isDisabled){
+      return;
+    }
+    isDisabled = true;
 
     // Override the MailChimp post callback
     window.mc.ajaxOptions.success = mceSuccessCb;
@@ -124,7 +128,7 @@ if ( typeof define === 'function' && define.amd ) {
       formTimeout = setTimeout(function(){
         classie.remove(formEl, 'form--success');
         toggleSubmitStatus('Notify me when ABX launches');
-        formSubmitEl.removeAttribute('disabled');
+        isDisabled = false;
       }, 2000);
     } 
     else {
@@ -145,24 +149,43 @@ if ( typeof define === 'function' && define.amd ) {
 
       formTimeout = setTimeout(function(){
         toggleSubmitStatus('Notify me when ABX launches');
-        formSubmitEl.removeAttribute('disabled');
+        isDisabled = false;
       }, 2000);
     }
   }
 
   function toggleSubmitStatus(text){
-    if(useBefore){
-      formSubmitEl.setAttribute('data-before', text);
-      classie.add(formEl, 'form--before--enter');
-      classie.remove(formEl, 'form--after--enter');
-    }
-    else {
-      formSubmitEl.setAttribute('data-after', text);
-      classie.add(formEl, 'form--after--enter');
-      classie.remove(formEl, 'form--before--enter');
+    if(canAnimate()){
+      if(useBefore){
+        formSubmitEl.setAttribute('data-before', text);
+        classie.add(formEl, 'form--before--enter');
+        classie.remove(formEl, 'form--after--enter');
+      }
+      else {
+        formSubmitEl.setAttribute('data-after', text);
+        classie.add(formEl, 'form--after--enter');
+        classie.remove(formEl, 'form--before--enter');
+      }
+
+      useBefore = !useBefore;
+
+    } else {
+      formSubmitEl.innerHTML = text;
     }
 
-    useBefore = !useBefore;
+  }
+
+  function canAnimate(){
+    if (!window.getComputedStyle) {
+      return false;
+    }
+
+    var elem = document.getElementById('csspseudoanimations_test');
+    return window.getComputedStyle(elem, ':before').getPropertyValue('font-size') === '10px';
+  }
+
+  if(!canAnimate()){
+    classie.add(document.body, 'no-csspseudoanimations');
   }
 })();
 
