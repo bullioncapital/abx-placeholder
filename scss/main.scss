@@ -3,6 +3,7 @@ $body-color: #fff;
 $gold: #C5A41D;
 $gray: #BABFC5;
 $blue: #12789B;
+$blue_dark: darken(#12789B, 5%);
 $input-color: #3A495A;
 
 // Breakpoints
@@ -12,6 +13,11 @@ $tablet: 768px;
 // Fonts
 $font-family-text: 'Roboto', sans-serif;
 $font-family-heading: 'Roboto Condensed', sans-serif;
+
+// Background
+$background: 'assets/hd_coming.jpg';
+$background_mobile: 'assets/hd_coming_mobile.jpg';
+$background_mobile_pos: 'top+70px center';
 
 * {
   box-sizing: border-box;
@@ -29,13 +35,8 @@ html {
 }
 
 body {
-  background: $bg-color url('assets/hd_coming_mobile.jpg') no-repeat top center;
-  background-size: auto 100%;
+  background: $bg-color;
 	color: #fff;
-
-  @media (min-width: $tablet) {
-    background: $bg-color url('assets/hd_coming.jpg') no-repeat top center;
-  }
 }
 
 .logo {
@@ -91,8 +92,19 @@ body {
 
   padding: 25px 0 25px;
 
+	color: #fff;
+
+
   @media (min-height: 800px){
     padding: 50px 0 25px;
+  }
+
+  background: $bg-color url($background_mobile) no-repeat #{$background_mobile_pos};
+  background-size: 100% auto;
+
+  @media (min-width: $tablet) {
+    background: $bg-color url($background) no-repeat top center;
+    background-size: auto 100%;
   }
 }
 
@@ -194,6 +206,7 @@ body {
 .teaser {
   @extend %heading-bold;
   font-size: 20px;
+  padding-top: 25px;
 
   @media (min-width: $tablet ){
     font-size: 3vw;
@@ -291,6 +304,7 @@ body {
 .input::placeholder {
   color: transparent;
 
+  .no-js &,
   .lt-ie9 & {
     color: $gray;
   }
@@ -303,6 +317,10 @@ body {
   width: 100%;
   text-align: left;
   overflow: hidden;
+
+  .no-js & {
+    display: none;
+  }
 
 
   @media (min-width: $tablet){
@@ -376,6 +394,16 @@ body {
 
   width: 100%;
 
+  transition: background 0.3s;
+
+  &:hover {
+    background: $blue_dark;
+  }
+
+  &:disabled {
+    color: #FFF; //IE9 Hack Fix
+  }
+
   @media (min-width: $tablet){
     height: 75px;
   }
@@ -392,10 +420,16 @@ body {
     width: 49%;
     color: #FFF;
 
+  }
+
+  .lt-ie9 &,
+  .no-csspseudoanimations & {
     &:before,
     &:after {
       display: none;
     }
+
+    color: #FFF;
   }
 
   &:before,
@@ -494,7 +528,7 @@ body {
   @extend %body-medium;
   font-size: 16px;
   color: $gray;
-  margin: 0;
+  margin: 0 25px 0 0;
 
   @media (min-width: $tablet){
     float: left;
@@ -543,7 +577,7 @@ body {
 
 .contact__numbers a {
   @media (max-width: 1150px) {
-    display: block;
+    display: inline-block;
     float: none;
   }
 }

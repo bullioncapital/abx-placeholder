@@ -69,13 +69,13 @@ gulp.task('js', function(){
     .pipe($.modernizr({
       "options" : [
         "setClasses",
-        "addTest",
         "html5printshiv",
         "testProp",
         "fnBind"
       ],
       "tests" : [
-        'transforms'
+        'transforms',
+        'csspseudoanimations'
       ],
     }))
     .pipe(gulp.dest('dist/assets'))

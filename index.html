@@ -27,10 +27,14 @@
         <meta name="twitter:image" content="http://abxglobal.com/assets/abx_logo.png">
 
         <link href='http://fonts.googleapis.com/css?family=Roboto:500,100|Roboto+Condensed:700,300' rel='stylesheet' type='text/css'>
+
         <link rel="stylesheet" inline href="dist/assets/vendor.min.css">
         <link rel="stylesheet" inline href="dist/main.css">
-
-        <script src="dist/assets/modernizr.js" inline></script>
+        <script>
+          //Remove no-js
+          var reJS = new RegExp('(^|\\s)no-js(\\s|$)');
+          document.documentElement.className = document.documentElement.className.replace(reJS, '$1js$2');
+        </script>
     </head>
     <body>
         <div class="container">
@@ -105,6 +109,7 @@
                 </div>
             </footer>
         </div>
+        <div id="csspseudoanimations_test"></div>
 
         <script src="dist/assets/main.js" inline></script>
     </body>
