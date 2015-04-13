@@ -126,7 +126,7 @@ gulp.task('package', ['build'], function () {
 
   return gulp.src('index.html')
     .pipe($.inlineSource())
-    //.pipe($.minifyHtml(minifyHtmlOps))
+    .pipe($.minifyHtml(minifyHtmlOps))
     .pipe(gulp.dest('dist/'))
     .pipe($.inlineBase64({
         baseDir: __dirname + '/dist/',
