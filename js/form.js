@@ -100,10 +100,12 @@
     }
 
     var elem = document.getElementById('csspseudoanimations_test');
-    return window.getComputedStyle(elem, ':before').getPropertyValue('font-size') === '10px';
+    return window.getComputedStyle(elem, ':before').getPropertyValue('font-size') !== '10px';
   }
 
-  if(!canAnimate()){
-    classie.add(document.body, 'no-csspseudoanimations');
-  }
+  document.addEventListener("DOMContentLoaded", function(event) { 
+    if(!canAnimate()){
+      classie.add(document.body, 'no-csspseudoanimations');
+    }
+  });
 })();

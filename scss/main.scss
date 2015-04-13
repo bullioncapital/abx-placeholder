@@ -605,3 +605,16 @@ body {
     float: none;
   }
 }
+
+// Feature Detection
+
+#csspseudoanimations_test:before {
+  content: '';
+  animation: csspseudoanimations_test 0.000001s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes csspseudoanimations_test {
+  from {font-size: 10px; }
+  to {font-size: 1px; }
+}
