@@ -120,17 +120,23 @@ if ( typeof define === 'function' && define.amd ) {
 
   function mceSuccessCb(resp){
     classie.remove(formEl, 'form--submitted');
-    
+
     if (resp.result == "success"){
       classie.add(formEl, 'form--success');
-      toggleSubmitStatus('Thank You!');
+      toggleSubmitStatus('You’ll be notified upon launch!');
 
       formTimeout = setTimeout(function(){
         classie.remove(formEl, 'form--success');
-        toggleSubmitStatus('Notify me when ABX launches');
+
+        document.getElementById('emailLabel').innerHTML = "Enter another email";
+        formEl.reset();
+
+        formEmailEl.blur();
+        classie.remove(formEmailEl, 'input--filled');
+
         isDisabled = false;
-      }, 2000);
-    } 
+      }, 3000);
+    }
     else {
       var parts = resp.msg.split(' - ',2);
       if (parts[1]===undefined){
@@ -184,7 +190,7 @@ if ( typeof define === 'function' && define.amd ) {
     return window.getComputedStyle(elem, ':before').getPropertyValue('font-size') !== '10px';
   }
 
-  document.addEventListener("DOMContentLoaded", function(event) { 
+  document.addEventListener("DOMContentLoaded", function(event) {
     if(!canAnimate()){
       classie.add(document.body, 'no-csspseudoanimations');
     }
@@ -216,7 +222,7 @@ ga('create','UA-48729948-7','auto');ga('send','pageview');
       };
     })();
   }
-  
+
   if( inputEl.value.trim() !== '' ) {
     classie.add(inputEl, 'input--filled');
   }
@@ -604,16 +610,4 @@ ga('create','UA-48729948-7','auto');ga('send','pageview');
     });
 
 }(jQuery));
-
-
-var fontToggle = false;
-
-function toggleFonts(){
-  if(fontToggle){
-    document.documentElement.className = 'js wf-roboto-n5-active wf-roboto-n1-active wf-robotocondensed-n7-active wf-robotocondensed-n3-active wf-active';
-  } else {
-    document.documentElement.className = 'js wf-roboto-n5-inactive wf-roboto-n1-inactive wf-robotocondensed-n7-inactive wf-robotocondensed-n3-inactive wf-inactive';
-  }
-  fontToggle = !fontToggle;
-}
 
