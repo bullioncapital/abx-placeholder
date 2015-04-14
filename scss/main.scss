@@ -268,12 +268,12 @@ body {
 
 .emailForm {
   @extend %clearfix;
-  margin-top: 30px;
+  margin-top: 8px;
   margin-bottom: 20px;
   position: relative;
 
   @media (min-width: $tablet){
-    margin-top: 40px;
+    margin-top: 18px;
   }
 }
 
@@ -393,9 +393,7 @@ body {
   transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
   opacity: 0;
 
-  position: absolute;
-  left: 0;
-  bottom: 100%;
+  min-height: 1.4em;
 
   .form--error & {
     opacity: 1;
