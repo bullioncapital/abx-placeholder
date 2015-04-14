@@ -554,7 +554,7 @@ body {
   color: $gray;
   margin: 0 25px 0 0;
 
-  @media (min-width: $tablet){
+  @media (min-width: 840px){
     float: left;
   }
 }
@@ -563,17 +563,14 @@ body {
   @extend %body-light;
   font-size: 16px;
   color: $gray;
+  margin: 10px 0;
 
-  div,
-  a {
-    margin: 10px 0;
-    @media (min-width: $tablet){
-      margin: 0 10px;
-      float: left;
-      display: inline-block;
-    }
+  @media (min-width: 840px){
+    float: left;
+    margin: 0 10px;
   }
 
+  a
   a,
   a:link,
   a:visited {
