@@ -39,17 +39,17 @@
 
   function mceSuccessCb(resp){
     classie.remove(formEl, 'form--submitted');
-    
+
     if (resp.result == "success"){
       classie.add(formEl, 'form--success');
-      toggleSubmitStatus('Thank You!');
+      toggleSubmitStatus('You’ll be notified upon launch!');
 
       formTimeout = setTimeout(function(){
         classie.remove(formEl, 'form--success');
         toggleSubmitStatus('Notify me when ABX launches');
         isDisabled = false;
       }, 2000);
-    } 
+    }
     else {
       var parts = resp.msg.split(' - ',2);
       if (parts[1]===undefined){
@@ -103,7 +103,7 @@
     return window.getComputedStyle(elem, ':before').getPropertyValue('font-size') !== '10px';
   }
 
-  document.addEventListener("DOMContentLoaded", function(event) { 
+  document.addEventListener("DOMContentLoaded", function(event) {
     if(!canAnimate()){
       classie.add(document.body, 'no-csspseudoanimations');
     }
