@@ -46,9 +46,15 @@
 
       formTimeout = setTimeout(function(){
         classie.remove(formEl, 'form--success');
-        toggleSubmitStatus('Notify me when ABX launches');
+
+        document.getElementById('emailLabel').innerHTML = "Enter another email";
+        formEl.reset();
+
+        formEmailEl.blur();
+        classie.remove(formEmailEl, 'input--filled');
+
         isDisabled = false;
-      }, 2000);
+      }, 3000);
     }
     else {
       var parts = resp.msg.split(' - ',2);

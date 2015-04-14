@@ -346,6 +346,15 @@ body {
     display: none;
   }
 
+  .input--filled + &,
+  .input:focus + & {
+    width: 30px;
+    height: 100%;
+
+    transition: all 0.1s 0.3s;
+
+  }
+
 
   @media (min-width: $tablet){
     line-height: 75px;
@@ -375,6 +384,7 @@ body {
   display: inline-block;
   transition: transform 0.3s, opacity 0.3s;
   transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
+  position: relative;
 
   .input--filled + .input__label &,
   .input:focus + .input__label & {

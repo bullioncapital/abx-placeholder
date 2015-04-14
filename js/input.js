@@ -16,7 +16,7 @@
       };
     })();
   }
-  
+
   if( inputEl.value.trim() !== '' ) {
     classie.add(inputEl, 'input--filled');
   }
