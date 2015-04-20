@@ -16,8 +16,10 @@ $font-family-heading: 'Roboto Condensed', 'Arial Narrow', sans-serif;
 
 // Background
 $background: 'assets/hd_coming.jpg';
+$background_tablet: 'assets/hd_coming_tablet.jpg';
+$background_tablet_pos: 'top center';
 $background_mobile: 'assets/hd_coming_mobile.jpg';
-$background_mobile_pos: 'top+70px center';
+$background_mobile_pos: 'top center';
 
 * {
   box-sizing: border-box;
@@ -124,9 +126,12 @@ body {
   }
 
   background: $bg-color url($background_mobile) no-repeat #{$background_mobile_pos};
-  background-size: 100% auto;
 
   @media (min-width: $tablet) {
+    background: $bg-color url($background_tablet) no-repeat #{$background_tablet_pos};
+  }
+
+  @media (min-width: $desktop) {
     background: $bg-color url($background) no-repeat top center;
     background-size: auto 100%;
   }
@@ -609,6 +614,15 @@ body {
     display: inline-block;
     float: none;
   }
+}
+
+.citations {
+  font-size: 8px;
+  clear: both;
+  padding-top: 20px;
+  display: block;
+  color: $gray;
+  opacity: 0.3;
 }
 
 // Feature Detection
